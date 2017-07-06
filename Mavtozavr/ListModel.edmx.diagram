@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f726bcbbf6c14bb7a47cd77c081a86e5" Name="Diagram1" ZoomLevel="109" >
+        <EntityTypeShape EntityType="ListModel.Orgs" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ListModel.Cities" Width="1.5" PointX="0.75" PointY="2.75" />
+        <EntityTypeShape EntityType="ListModel.InvoicePositions" Width="1.5" PointX="0.75" PointY="5.5" FillColor="255, 255, 192" />
+        <EntityTypeShape EntityType="ListModel.TraidPoints" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ListModel.Invoices" Width="1.5" PointX="2.75" PointY="5.625" FillColor="255, 255, 192" />
+        <EntityTypeShape EntityType="ListModel.WorkKits" Width="1.5" PointX="4.75" PointY="0.75" FillColor="192, 255, 192" />
+        <EntityTypeShape EntityType="ListModel.Sales" Width="1.5" PointX="4.75" PointY="3.125" FillColor="Aqua" />
+        <EntityTypeShape EntityType="ListModel.Kits" Width="1.5" PointX="6.75" PointY="0.75" FillColor="192, 255, 192" />
+        <EntityTypeShape EntityType="ListModel.Devices" Width="1.5" PointX="8.875" PointY="0.75" FillColor="192, 255, 192" />
+        <EntityTypeShape EntityType="ListModel.TabletPCs" Width="1.5" PointX="10.875" PointY="0.75" FillColor="192, 255, 192" />
+        <InheritanceConnector EntityType="ListModel.TabletPCs" />
+        <AssociationConnector Association="ListModel.KitsDevices" />
+        <AssociationConnector Association="ListModel.WorkKitsKits" />
+        <AssociationConnector Association="ListModel.WorkKitsTraidPoints" />
+        <AssociationConnector Association="ListModel.SalesTraidPoints" />
+        <AssociationConnector Association="ListModel.InvoicesTraidPoints" />
+        <AssociationConnector Association="ListModel.InvoicePositionsInvoices" />
+        <AssociationConnector Association="ListModel.OrgsTraidPoints" />
+        <AssociationConnector Association="ListModel.CitiesTraidPoints" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

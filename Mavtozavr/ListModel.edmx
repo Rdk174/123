@@ -1,0 +1,664 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ListModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ListModelStoreContainer">
+    <EntitySet Name="Orgs" EntityType="ListModel.Store.Orgs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cities" EntityType="ListModel.Store.Cities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="InvoicePositions" EntityType="ListModel.Store.InvoicePositions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TraidPoints" EntityType="ListModel.Store.TraidPoints" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Invoices" EntityType="ListModel.Store.Invoices" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WorkKits" EntityType="ListModel.Store.WorkKits" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sales" EntityType="ListModel.Store.Sales" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Kits" EntityType="ListModel.Store.Kits" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Devices" EntityType="ListModel.Store.Devices" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Devices_TabletPCs" EntityType="ListModel.Store.Devices_TabletPCs" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="KitsDevices" Association="ListModel.Store.KitsDevices">
+      <End Role="Kits" EntitySet="Kits" />
+      <End Role="Devices" EntitySet="Devices" />
+    </AssociationSet>
+    <AssociationSet Name="WorkKitsKits" Association="ListModel.Store.WorkKitsKits">
+      <End Role="WorkKits" EntitySet="WorkKits" />
+      <End Role="Kits" EntitySet="Kits" />
+    </AssociationSet>
+    <AssociationSet Name="WorkKitsTraidPoints" Association="ListModel.Store.WorkKitsTraidPoints">
+      <End Role="WorkKits" EntitySet="WorkKits" />
+      <End Role="TraidPoints" EntitySet="TraidPoints" />
+    </AssociationSet>
+    <AssociationSet Name="SalesTraidPoints" Association="ListModel.Store.SalesTraidPoints">
+      <End Role="Sales" EntitySet="Sales" />
+      <End Role="TraidPoints" EntitySet="TraidPoints" />
+    </AssociationSet>
+    <AssociationSet Name="InvoicesTraidPoints" Association="ListModel.Store.InvoicesTraidPoints">
+      <End Role="Invoices" EntitySet="Invoices" />
+      <End Role="TraidPoints" EntitySet="TraidPoints" />
+    </AssociationSet>
+    <AssociationSet Name="InvoicePositionsInvoices" Association="ListModel.Store.InvoicePositionsInvoices">
+      <End Role="InvoicePositions" EntitySet="InvoicePositions" />
+      <End Role="Invoices" EntitySet="Invoices" />
+    </AssociationSet>
+    <AssociationSet Name="OrgsTraidPoints" Association="ListModel.Store.OrgsTraidPoints">
+      <End Role="Orgs" EntitySet="Orgs" />
+      <End Role="TraidPoints" EntitySet="TraidPoints" />
+    </AssociationSet>
+    <AssociationSet Name="CitiesTraidPoints" Association="ListModel.Store.CitiesTraidPoints">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="TraidPoints" EntitySet="TraidPoints" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TabletPCs_inherits_Devices" Association="ListModel.Store.FK_TabletPCs_inherits_Devices">
+      <End Role="Devices" EntitySet="Devices" />
+      <End Role="TabletPCs" EntitySet="Devices_TabletPCs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Orgs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InvoicePositions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvoiceId" Type="int" Nullable="false" />
+    <Property Name="Product" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Qantity" Type="int" Nullable="false" />
+    <Property Name="Barcode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Invoices_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TraidPoints">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Kpp" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TraidPointType" Type="int" Nullable="false" />
+    <Property Name="Egais" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UTMVersion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GOSTDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PKIDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="POSVersion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SyncTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="POSid" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrgId" Type="int" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="Orgs_Id" Type="int" Nullable="false" />
+    <Property Name="Cities_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Invoices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TradePointId" Type="int" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SyncTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TraidPoints_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkKits">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TradePointId" Type="int" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TraidPoints_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sales">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TradePointId" Type="int" Nullable="false" />
+    <Property Name="SoldTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OperationType" Type="int" Nullable="false" />
+    <Property Name="Product" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="TraidPoints_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kits">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkKitId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DeviceId" Type="int" Nullable="false" />
+    <Property Name="Devices_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="WorkKits_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Devices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DeviceType" Type="int" Nullable="false" />
+    <Property Name="SerialNumber" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="InventoryNumber" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Devices_TabletPCs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="IpAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IMEI" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <Association Name="KitsDevices">
+    <End Role="Kits" Type="ListModel.Store.Kits" Multiplicity="*" />
+    <End Role="Devices" Type="ListModel.Store.Devices" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Devices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kits">
+        <PropertyRef Name="Devices_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WorkKitsKits">
+    <End Role="WorkKits" Type="ListModel.Store.WorkKits" Multiplicity="1" />
+    <End Role="Kits" Type="ListModel.Store.Kits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkKits">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kits">
+        <PropertyRef Name="WorkKits_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WorkKitsTraidPoints">
+    <End Role="WorkKits" Type="ListModel.Store.WorkKits" Multiplicity="*" />
+    <End Role="TraidPoints" Type="ListModel.Store.TraidPoints" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="TraidPoints">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WorkKits">
+        <PropertyRef Name="TraidPoints_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SalesTraidPoints">
+    <End Role="Sales" Type="ListModel.Store.Sales" Multiplicity="*" />
+    <End Role="TraidPoints" Type="ListModel.Store.TraidPoints" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="TraidPoints">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sales">
+        <PropertyRef Name="TraidPoints_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InvoicesTraidPoints">
+    <End Role="Invoices" Type="ListModel.Store.Invoices" Multiplicity="*" />
+    <End Role="TraidPoints" Type="ListModel.Store.TraidPoints" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="TraidPoints">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Invoices">
+        <PropertyRef Name="TraidPoints_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InvoicePositionsInvoices">
+    <End Role="InvoicePositions" Type="ListModel.Store.InvoicePositions" Multiplicity="*" />
+    <End Role="Invoices" Type="ListModel.Store.Invoices" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Invoices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InvoicePositions">
+        <PropertyRef Name="Invoices_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrgsTraidPoints">
+    <End Role="Orgs" Type="ListModel.Store.Orgs" Multiplicity="1" />
+    <End Role="TraidPoints" Type="ListModel.Store.TraidPoints" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orgs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TraidPoints">
+        <PropertyRef Name="Orgs_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CitiesTraidPoints">
+    <End Role="Cities" Type="ListModel.Store.Cities" Multiplicity="1" />
+    <End Role="TraidPoints" Type="ListModel.Store.TraidPoints" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TraidPoints">
+        <PropertyRef Name="Cities_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TabletPCs_inherits_Devices">
+    <End Role="Devices" Type="ListModel.Store.Devices" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TabletPCs" Type="ListModel.Store.Devices_TabletPCs" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Devices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TabletPCs">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ListModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ListModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Orgs" EntityType="ListModel.Orgs" />
+          <EntitySet Name="Cities" EntityType="ListModel.Cities" />
+          <EntitySet Name="InvoicePositions" EntityType="ListModel.InvoicePositions" />
+          <EntitySet Name="TraidPoints" EntityType="ListModel.TraidPoints" />
+          <EntitySet Name="Invoices" EntityType="ListModel.Invoices" />
+          <EntitySet Name="WorkKits" EntityType="ListModel.WorkKits" />
+          <EntitySet Name="Sales" EntityType="ListModel.Sales" />
+          <EntitySet Name="Kits" EntityType="ListModel.Kits" />
+          <EntitySet Name="Devices" EntityType="ListModel.Devices" />
+          <AssociationSet Name="KitsDevices" Association="ListModel.KitsDevices">
+            <End Role="Kits" EntitySet="Kits" />
+            <End Role="Devices" EntitySet="Devices" />
+          </AssociationSet>
+          <AssociationSet Name="WorkKitsKits" Association="ListModel.WorkKitsKits">
+            <End Role="WorkKits" EntitySet="WorkKits" />
+            <End Role="Kits" EntitySet="Kits" />
+          </AssociationSet>
+          <AssociationSet Name="WorkKitsTraidPoints" Association="ListModel.WorkKitsTraidPoints">
+            <End Role="WorkKits" EntitySet="WorkKits" />
+            <End Role="TraidPoints" EntitySet="TraidPoints" />
+          </AssociationSet>
+          <AssociationSet Name="SalesTraidPoints" Association="ListModel.SalesTraidPoints">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="TraidPoints" EntitySet="TraidPoints" />
+          </AssociationSet>
+          <AssociationSet Name="InvoicesTraidPoints" Association="ListModel.InvoicesTraidPoints">
+            <End Role="Invoices" EntitySet="Invoices" />
+            <End Role="TraidPoints" EntitySet="TraidPoints" />
+          </AssociationSet>
+          <AssociationSet Name="InvoicePositionsInvoices" Association="ListModel.InvoicePositionsInvoices">
+            <End Role="InvoicePositions" EntitySet="InvoicePositions" />
+            <End Role="Invoices" EntitySet="Invoices" />
+          </AssociationSet>
+          <AssociationSet Name="OrgsTraidPoints" Association="ListModel.OrgsTraidPoints">
+            <End Role="Orgs" EntitySet="Orgs" />
+            <End Role="TraidPoints" EntitySet="TraidPoints" />
+          </AssociationSet>
+          <AssociationSet Name="CitiesTraidPoints" Association="ListModel.CitiesTraidPoints">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="TraidPoints" EntitySet="TraidPoints" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Orgs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="TraidPoints" Relationship="ListModel.OrgsTraidPoints" FromRole="Orgs" ToRole="TraidPoints" />
+        </EntityType>
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="TraidPoints" Relationship="ListModel.CitiesTraidPoints" FromRole="Cities" ToRole="TraidPoints" />
+        </EntityType>
+        <EntityType Name="InvoicePositions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceId" Type="Int32" Nullable="false" />
+          <Property Name="Product" Type="String" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Qantity" Type="Int32" Nullable="false" />
+          <Property Name="Barcode" Type="String" Nullable="false" />
+          <NavigationProperty Name="Invoices" Relationship="ListModel.InvoicePositionsInvoices" FromRole="InvoicePositions" ToRole="Invoices" cg:GetterAccess="Private" />
+        </EntityType>
+        <EntityType Name="TraidPoints">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address" Type="String" Nullable="false" />
+          <Property Name="Kpp" Type="String" Nullable="false" />
+          <Property Name="TraidPointType" Type="Int32" Nullable="false" />
+          <Property Name="Egais" Type="String" Nullable="false" />
+          <Property Name="UTMVersion" Type="String" Nullable="false" />
+          <Property Name="GOSTDate" Type="String" Nullable="false" />
+          <Property Name="PKIDate" Type="String" Nullable="false" />
+          <Property Name="POSVersion" Type="String" Nullable="false" />
+          <Property Name="SyncTime" Type="String" Nullable="false" />
+          <Property Name="POSid" Type="String" Nullable="false" />
+          <NavigationProperty Name="WorkKits" Relationship="ListModel.WorkKitsTraidPoints" FromRole="TraidPoints" ToRole="WorkKits" cg:GetterAccess="Private" />
+          <NavigationProperty Name="Sales" Relationship="ListModel.SalesTraidPoints" FromRole="TraidPoints" ToRole="Sales" cg:GetterAccess="Private" />
+          <NavigationProperty Name="Invoices" Relationship="ListModel.InvoicesTraidPoints" FromRole="TraidPoints" ToRole="Invoices" cg:GetterAccess="Private" />
+          <Property Name="OrgId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Orgs" Relationship="ListModel.OrgsTraidPoints" FromRole="TraidPoints" ToRole="Orgs" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cities" Relationship="ListModel.CitiesTraidPoints" FromRole="TraidPoints" ToRole="Cities" />
+        </EntityType>
+        <EntityType Name="Invoices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TradePointId" Type="Int32" Nullable="false" />
+          <Property Name="Number" Type="String" Nullable="false" />
+          <Property Name="CreatedDate" Type="String" Nullable="false" />
+          <Property Name="SyncTime" Type="String" Nullable="false" />
+          <NavigationProperty Name="TraidPoints" Relationship="ListModel.InvoicesTraidPoints" FromRole="Invoices" ToRole="TraidPoints" cg:GetterAccess="Private" />
+          <NavigationProperty Name="InvoicePositions" Relationship="ListModel.InvoicePositionsInvoices" FromRole="Invoices" ToRole="InvoicePositions" cg:GetterAccess="Private" />
+        </EntityType>
+        <EntityType Name="WorkKits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TradePointId" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" Nullable="false" />
+          <NavigationProperty Name="Kits" Relationship="ListModel.WorkKitsKits" FromRole="WorkKits" ToRole="Kits" cg:GetterAccess="Private" />
+          <NavigationProperty Name="TraidPoints" Relationship="ListModel.WorkKitsTraidPoints" FromRole="WorkKits" ToRole="TraidPoints" cg:GetterAccess="Private" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TradePointId" Type="Int32" Nullable="false" />
+          <Property Name="SoldTime" Type="String" Nullable="false" />
+          <Property Name="OperationType" Type="Int32" Nullable="false" />
+          <Property Name="Product" Type="String" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <NavigationProperty Name="TraidPoints" Relationship="ListModel.SalesTraidPoints" FromRole="Sales" ToRole="TraidPoints" cg:GetterAccess="Private" />
+        </EntityType>
+        <EntityType Name="Kits">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkKitId" Type="String" Nullable="false" />
+          <Property Name="DeviceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Devices" Relationship="ListModel.KitsDevices" FromRole="Kits" ToRole="Devices" cg:GetterAccess="Private" />
+          <NavigationProperty Name="WorkKits" Relationship="ListModel.WorkKitsKits" FromRole="Kits" ToRole="WorkKits" cg:GetterAccess="Private" />
+        </EntityType>
+        <EntityType Name="Devices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="SerialNumber" Type="String" Nullable="false" />
+          <Property Name="InventoryNumber" Type="String" Nullable="false" />
+          <NavigationProperty Name="Kits" Relationship="ListModel.KitsDevices" FromRole="Devices" ToRole="Kits" cg:GetterAccess="Private" />
+        </EntityType>
+        <EntityType Name="TabletPCs" BaseType="ListModel.Devices">
+          <Property Name="IpAddress" Type="String" Nullable="false" />
+          <Property Name="IMEI" Type="String" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="KitsDevices">
+          <End Type="ListModel.Kits" Role="Kits" Multiplicity="*" />
+          <End Type="ListModel.Devices" Role="Devices" Multiplicity="1" />
+        </Association>
+        <Association Name="WorkKitsKits">
+          <End Type="ListModel.WorkKits" Role="WorkKits" Multiplicity="1" />
+          <End Type="ListModel.Kits" Role="Kits" Multiplicity="*" />
+        </Association>
+        <Association Name="WorkKitsTraidPoints">
+          <End Type="ListModel.WorkKits" Role="WorkKits" Multiplicity="*" />
+          <End Type="ListModel.TraidPoints" Role="TraidPoints" Multiplicity="1" />
+        </Association>
+        <Association Name="SalesTraidPoints">
+          <End Type="ListModel.Sales" Role="Sales" Multiplicity="*" />
+          <End Type="ListModel.TraidPoints" Role="TraidPoints" Multiplicity="1" />
+        </Association>
+        <Association Name="InvoicesTraidPoints">
+          <End Type="ListModel.Invoices" Role="Invoices" Multiplicity="*" />
+          <End Type="ListModel.TraidPoints" Role="TraidPoints" Multiplicity="1" />
+        </Association>
+        <Association Name="InvoicePositionsInvoices">
+          <End Type="ListModel.InvoicePositions" Role="InvoicePositions" Multiplicity="*" />
+          <End Type="ListModel.Invoices" Role="Invoices" Multiplicity="1" />
+        </Association>
+        <EnumType Name="TraidPointTypes">
+          <Member Name="Unknown" Value="0" />
+          <Member Name="Store" Value="1" />
+          <Member Name="Cafe" Value="2" />
+        </EnumType>
+        <Association Name="OrgsTraidPoints">
+          <End Type="ListModel.Orgs" Role="Orgs" Multiplicity="1" />
+          <End Type="ListModel.TraidPoints" Role="TraidPoints" Multiplicity="*" />
+        </Association>
+        <Association Name="CitiesTraidPoints">
+          <End Type="ListModel.Cities" Role="Cities" Multiplicity="1" />
+          <End Type="ListModel.TraidPoints" Role="TraidPoints" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ListModelStoreContainer" CdmEntityContainer="ListModelContainer">
+    <EntitySetMapping Name="Orgs">
+      <EntityTypeMapping TypeName="IsTypeOf(ListModel.Orgs)">
+        <MappingFragment StoreEntitySet="Orgs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="IsTypeOf(ListModel.Cities)">
+        <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoicePositions">
+      <EntityTypeMapping TypeName="IsTypeOf(ListModel.InvoicePositions)">
+        <MappingFragment StoreEntitySet="InvoicePositions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Qantity" ColumnName="Qantity" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TraidPoints">
+      <EntityTypeMapping TypeName="IsTypeOf(ListModel.TraidPoints)">
+        <MappingFragment StoreEntitySet="TraidPoints">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Kpp" ColumnName="Kpp" />
+          <ScalarProperty Name="TraidPointType" ColumnName="TraidPointType" />
+          <ScalarProperty Name="Egais" ColumnName="Egais" />
+          <ScalarProperty Name="UTMVersion" ColumnName="UTMVersion" />
+          <ScalarProperty Name="GOSTDate" ColumnName="GOSTDate" />
+          <ScalarProperty Name="PKIDate" ColumnName="PKIDate" />
+          <ScalarProperty Name="POSVersion" ColumnName="POSVersion" />
+          <ScalarProperty Name="SyncTime" ColumnName="SyncTime" />
+          <ScalarProperty Name="POSid" ColumnName="POSid" />
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoices">
+      <EntityTypeMapping TypeName="IsTypeOf(ListModel.Invoices)">
+        <MappingFragment StoreEntitySet="Invoices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TradePointId" ColumnName="TradePointId" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="SyncTime" ColumnName="SyncTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkKits">
+      <EntityTypeMapping TypeName="IsTypeOf(ListModel.WorkKits)">
+        <MappingFragment StoreEntitySet="WorkKits">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TradePointId" ColumnName="TradePointId" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sales">
+      <EntityTypeMapping TypeName="IsTypeOf(ListModel.Sales)">
+        <MappingFragment StoreEntitySet="Sales">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TradePointId" ColumnName="TradePointId" />
+          <ScalarProperty Name="SoldTime" ColumnName="SoldTime" />
+          <ScalarProperty Name="OperationType" ColumnName="OperationType" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kits">
+      <EntityTypeMapping TypeName="IsTypeOf(ListModel.Kits)">
+        <MappingFragment StoreEntitySet="Kits">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="WorkKitId" ColumnName="WorkKitId" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Devices">
+      <EntityTypeMapping TypeName="IsTypeOf(ListModel.Devices)">
+        <MappingFragment StoreEntitySet="Devices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="InventoryNumber" ColumnName="InventoryNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ListModel.TabletPCs)">
+        <MappingFragment StoreEntitySet="Devices_TabletPCs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="KitsDevices" TypeName="ListModel.KitsDevices" StoreEntitySet="Kits">
+      <EndProperty Name="Devices">
+        <ScalarProperty Name="Id" ColumnName="Devices_Id" />
+      </EndProperty>
+      <EndProperty Name="Kits">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="WorkKitsKits" TypeName="ListModel.WorkKitsKits" StoreEntitySet="Kits">
+      <EndProperty Name="WorkKits">
+        <ScalarProperty Name="Id" ColumnName="WorkKits_Id" />
+      </EndProperty>
+      <EndProperty Name="Kits">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="WorkKitsTraidPoints" TypeName="ListModel.WorkKitsTraidPoints" StoreEntitySet="WorkKits">
+      <EndProperty Name="TraidPoints">
+        <ScalarProperty Name="Id" ColumnName="TraidPoints_Id" />
+      </EndProperty>
+      <EndProperty Name="WorkKits">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SalesTraidPoints" TypeName="ListModel.SalesTraidPoints" StoreEntitySet="Sales">
+      <EndProperty Name="TraidPoints">
+        <ScalarProperty Name="Id" ColumnName="TraidPoints_Id" />
+      </EndProperty>
+      <EndProperty Name="Sales">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="InvoicesTraidPoints" TypeName="ListModel.InvoicesTraidPoints" StoreEntitySet="Invoices">
+      <EndProperty Name="TraidPoints">
+        <ScalarProperty Name="Id" ColumnName="TraidPoints_Id" />
+      </EndProperty>
+      <EndProperty Name="Invoices">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="InvoicePositionsInvoices" TypeName="ListModel.InvoicePositionsInvoices" StoreEntitySet="InvoicePositions">
+      <EndProperty Name="Invoices">
+        <ScalarProperty Name="Id" ColumnName="Invoices_Id" />
+      </EndProperty>
+      <EndProperty Name="InvoicePositions">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrgsTraidPoints" TypeName="ListModel.OrgsTraidPoints" StoreEntitySet="TraidPoints">
+      <EndProperty Name="Orgs">
+        <ScalarProperty Name="Id" ColumnName="Orgs_Id" />
+      </EndProperty>
+      <EndProperty Name="TraidPoints">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CitiesTraidPoints" TypeName="ListModel.CitiesTraidPoints" StoreEntitySet="TraidPoints">
+      <EndProperty Name="Cities">
+        <ScalarProperty Name="Id" ColumnName="Cities_Id" />
+      </EndProperty>
+      <EndProperty Name="TraidPoints">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
