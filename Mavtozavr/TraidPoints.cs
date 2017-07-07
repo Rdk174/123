@@ -11,22 +11,21 @@ namespace Mavtozavr
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class TraidPoints
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TraidPoints()
         {
-            this.WorkKits = new HashSet<WorkKits>();
             this.Sales = new HashSet<Sales>();
             this.Invoices = new HashSet<Invoices>();
+            this.Kits = new HashSet<Kits>();
         }
     
         public int Id { get; set; }
         public string Address { get; set; }
         public string Kpp { get; set; }
-        public int TraidPointType { get; set; }
+        public TraidPointTypes TraidPointType { get; set; }
         public string Egais { get; set; }
         public string UTMVersion { get; set; }
         public string GOSTDate { get; set; }
@@ -34,16 +33,15 @@ namespace Mavtozavr
         public string POSVersion { get; set; }
         public string SyncTime { get; set; }
         public string POSid { get; set; }
-        public int OrgId { get; set; }
-        public int CityId { get; set; }
+        public string Comment { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkKits> WorkKits { private get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sales> Sales { private get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Invoices> Invoices { private get; set; }
         public virtual Orgs Org { get; set; }
         public virtual Cities City { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Kits> Kits { get; set; }
     }
 }

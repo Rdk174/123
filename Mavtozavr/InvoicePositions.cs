@@ -15,12 +15,11 @@ namespace Mavtozavr
     public partial class InvoicePositions
     {
         public int Id { get; set; }
-        public int InvoiceId { get; set; }
         public string Product { get; set; }
         public double Price { get; set; }
         public int Qantity { get; set; }
         public string Barcode { get; set; }
     
-        public virtual Invoices Invoices { private get; set; }
+        public virtual Invoices Invoice { private get; set; }
     }
 }

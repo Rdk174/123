@@ -21,12 +21,11 @@ namespace Mavtozavr
         }
     
         public int Id { get; set; }
-        public int TradePointId { get; set; }
         public string Number { get; set; }
         public string CreatedDate { get; set; }
         public string SyncTime { get; set; }
     
-        public virtual TraidPoints TraidPoints { private get; set; }
+        public virtual TraidPoints TraidPoint { private get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InvoicePositions> InvoicePositions { private get; set; }
     }

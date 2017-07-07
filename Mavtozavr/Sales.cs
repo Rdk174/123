@@ -15,12 +15,11 @@ namespace Mavtozavr
     public partial class Sales
     {
         public int Id { get; set; }
-        public int TradePointId { get; set; }
         public string SoldTime { get; set; }
-        public int OperationType { get; set; }
+        public OperationTypes OperationType { get; set; }
         public string Product { get; set; }
         public double Price { get; set; }
     
-        public virtual TraidPoints TraidPoints { private get; set; }
+        public virtual TraidPoints TraidPoint { private get; set; }
     }
 }

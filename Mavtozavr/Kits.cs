@@ -14,11 +14,16 @@ namespace Mavtozavr
     
     public partial class Kits
     {
-        public int Id { get; set; }
-        public string WorkKitId { get; set; }
-        public int DeviceId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Kits()
+        {
+            this.Devices = new HashSet<Devices>();
+        }
     
-        public virtual Devices Devices { private get; set; }
-        public virtual WorkKits WorkKits { private get; set; }
+        public int Id { get; set; }
+    
+        public virtual TraidPoints TraidPoint { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Devices> Devices { get; set; }
     }
 }

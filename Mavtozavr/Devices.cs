@@ -14,18 +14,11 @@ namespace Mavtozavr
     
     public partial class Devices
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Devices()
-        {
-            this.Kits = new HashSet<Kits>();
-        }
-    
         public System.Guid Id { get; set; }
-        public int DeviceType { get; set; }
+        public DeviceTypes DeviceType { get; set; }
         public string SerialNumber { get; set; }
         public string InventoryNumber { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kits> Kits { private get; set; }
+        public virtual Kits Kits { get; set; }
     }
 }

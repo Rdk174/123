@@ -47,7 +47,7 @@ namespace Mavtozavr
                 Org = org,
                 Address = "Бугурусланская 64",
                 Kpp = "1111",
-                TraidPointType = (int)TraidPointsTypes.Shop,
+                TraidPointType = TraidPointTypes.Shop,
                 Egais = "000",
                 UTMVersion = "1",
                 GOSTDate = "2",

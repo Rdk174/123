@@ -1,6 +1,6 @@
 ﻿using Mavtozavr.Attributes;
 
-public enum TraidPointsTypes
+public enum TraidPointTypes
 {
     Unknown = 0,
     [StringValue("Магазин")]

@@ -30,7 +30,6 @@ namespace Mavtozavr
         public virtual DbSet<InvoicePositions> InvoicePositions { get; set; }
         public virtual DbSet<TraidPoints> TraidPoints { get; set; }
         public virtual DbSet<Invoices> Invoices { get; set; }
-        public virtual DbSet<WorkKits> WorkKits { get; set; }
         public virtual DbSet<Sales> Sales { get; set; }
         public virtual DbSet<Kits> Kits { get; set; }
         public virtual DbSet<Devices> Devices { get; set; }

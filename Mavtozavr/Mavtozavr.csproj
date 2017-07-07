@@ -117,12 +117,6 @@
     <Compile Include="TraidPoints.cs">
       <DependentUpon>ListModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TraidPointTypes.cs">
-      <DependentUpon>ListModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WorkKits.cs">
-      <DependentUpon>ListModel.tt</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
